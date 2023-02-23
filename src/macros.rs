@@ -103,7 +103,7 @@ macro_rules! ram_storage { (
         ram_storage!(
             name=RamStorage,
             backend=Ram,
-            trait=driver::Storage,
+            trait=LfsStorage,
             erase_value=0xff,
             read_size=32,
             write_size=32,
@@ -120,7 +120,7 @@ macro_rules! ram_storage { (
         ram_storage!(
             name=RamStorage,
             backend=Ram,
-            trait=driver::Storage,
+            trait=LfsStorage,
             erase_value=0xff,
             read_size=32,
             write_size=32,
