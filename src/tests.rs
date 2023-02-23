@@ -17,35 +17,35 @@ use crate::{
 };
 
 ram_storage!(
-    name=OtherRamStorage,
-    backend=OtherRam,
-    trait=driver::Storage,
-    erase_value=0xff,
-    read_size=1,
-    write_size=32,
-    cache_size_ty=consts::U32,
-    block_size=256,
-    block_count=512,
-    lookahead_size_ty=consts::U1,
-    filename_max_plus_one_ty=consts::U256,
-    path_max_plus_one_ty=consts::U256,
-    result=Result
+    OtherRamStorage,
+    OtherRam,
+    driver::Storage,
+    0xff,
+    1,
+    32,
+    consts::U32,
+    256,
+    512,
+    consts::U1,
+    consts::U256,
+    consts::U256,
+    Result
 );
 
 ram_storage!(
-    name=RamStorage,
-    backend=Ram,
-    trait=driver::Storage,
-    erase_value=0xff,
-    read_size=20*5,
-    write_size=20*7,
-    cache_size_ty=consts::U700,
-    block_size=20*35,
-    block_count=32,
-    lookahead_size_ty=consts::U16,
-    filename_max_plus_one_ty=consts::U256,
-    path_max_plus_one_ty=consts::U256,
-    result=Result
+    RamStorage,
+    Ram,
+    driver::Storage,
+    0xff,
+    20*5,
+    20*7,
+    consts::U700,
+    20*35,
+    32,
+    consts::U16,
+    consts::U256,
+    consts::U256,
+    Result
 );
 
 #[test]

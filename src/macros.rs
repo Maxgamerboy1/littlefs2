@@ -4,20 +4,19 @@
 /// A configurable implementation of the Storage trait in memory.
 #[macro_export]
 macro_rules! ram_storage { (
-
-    name=$Name:ident,
-    backend=$Backend:ident,
-    trait=$StorageTrait:path,
-    erase_value=$erase_value:expr,
-    read_size=$read_size:expr,
-    write_size=$write_size:expr,
-    cache_size_ty=$cache_size:path,
-    block_size=$block_size:expr,
-    block_count=$block_count:expr,
-    lookahead_size_ty=$lookahead_size:path,
-    filename_max_plus_one_ty=$filename_max_plus_one:path,
-    path_max_plus_one_ty=$path_max_plus_one:path,
-    result=$Result:ident
+    $Name:ident,
+    $Backend:ident,
+    $StorageTrait:path,
+    $erase_value:expr,
+    $read_size:expr,
+    $write_size:expr,
+    $cache_size:path,
+    $block_size:expr,
+    $block_count:expr,
+    $lookahead_size:path,
+    $filename_max_plus_one:path,
+    $path_max_plus_one:path,
+    $Result:ident
 
 ) => {
         pub struct $Backend {
@@ -84,73 +83,71 @@ macro_rules! ram_storage { (
     };
     ($Name:ident, $Backend:ident, $bytes:expr) => {
         ram_storage!(
-            name=$Name,
-            backend=$Backend,
-            trait=$crate::driver::Storage,
-            erase_value=0xff,
-            read_size=1,
-            write_size=1,
-            cache_size_ty=$crate::consts::U32,
-            block_size=128,
-            block_count=$bytes/128,
-            lookahead_size_ty=$crate::consts::U1,
-            filename_max_plus_one_ty=$crate::consts::U256,
-            path_max_plus_one_ty=$crate::consts::U256,
-            result=$crate::io::Result
+            $Name,
+            $Backend,
+            $crate::driver::Storage,
+            0xff,
+            1,
+            1,
+            $crate::consts::U32,
+            128,
+            $bytes/128,
+            $crate::consts::U1,
+            $crate::consts::U256,
+            $crate::consts::U256,
+            $crate::io::Result
         );
     };
     (tiny) => {
         ram_storage!(
-            name=RamStorage,
-            backend=Ram,
-            trait=$crate::driver::Storage,
-            erase_value=0xff,
-            read_size=32,
-            write_size=32,
-            cache_size_ty=$crate::consts::U32,
-            block_size=128,
-            block_count=8,
-            lookahead_size_ty=$crate::consts::U1,
-            filename_max_plus_one_ty=$crate::consts::U256,
-            path_max_plus_one_ty=$crate::consts::U256,
-            result=$crate::io::Result
+            RamStorage,
+            Ram,
+            $crate::driver::Storage,
+            0xff,
+            32,
+            32,
+            $crate::consts::U32,
+            128,
+            8,
+            $crate::consts::U1,
+            $crate::consts::U256,
+            $crate::consts::U256,
+            $crate::io::Result
         );
     };
     (large) => {
         ram_storage!(
-            name=RamStorage,
-            backend=Ram,
-            trait=$crate::driver::Storage,
-            erase_value=0xff,
-            read_size=32,
-            write_size=32,
-            cache_size_ty=$crate::consts::U32,
-            block_size=256,
-            block_count=512,
-            lookahead_size_ty=$crate::consts::U4,
-            filename_max_plus_one_ty=$crate::consts::U256,
-            path_max_plus_one_ty=$crate::consts::U256,
-            result=$crate::io::Result
+            RamStorage,
+            Ram,
+            $crate::driver::Storage,
+            0xff,
+            32,
+            32,
+            $crate::consts::U32,
+            256,
+            512,
+            $crate::consts::U4,
+            $crate::consts::U256,
+            $crate::consts::U256,
+            $crate::io::Result
         );
     };
 }
 
 #[macro_export]
 macro_rules! const_ram_storage { (
-
-    name=$Name:ident,
-    trait=$StorageTrait:path,
-    erase_value=$erase_value:expr,
-    read_size=$read_size:expr,
-    write_size=$write_size:expr,
-    cache_size_ty=$cache_size:path,
-    block_size=$block_size:expr,
-    block_count=$block_count:expr,
-    lookahead_size_ty=$lookahead_size:path,
-    filename_max_plus_one_ty=$filename_max_plus_one:path,
-    path_max_plus_one_ty=$path_max_plus_one:path,
-    result=$Result:ident
-
+    $Name:ident,
+    $StorageTrait:path,
+    $erase_value:expr,
+    $read_size:expr,
+    $write_size:expr,
+    $cache_size:path,
+    $block_size:expr,
+    $block_count:expr,
+    $lookahead_size:path,
+    $filename_max_plus_one:path,
+    $path_max_plus_one:path,
+    $Result:ident
 ) => {
         pub struct $Name {
             buf: [u8; $block_size * $block_count],
@@ -213,18 +210,18 @@ macro_rules! const_ram_storage { (
     };
     ($Name:ident, $bytes:expr) => {
         const_ram_storage!(
-            name=$Name,
-            trait=$crate::driver::Storage,
-            erase_value=0xff,
-            read_size=16,
-            write_size=512,
-            cache_size_ty=$crate::consts::U512,
-            block_size=512,
-            block_count=$bytes/512,
-            lookahead_size_ty=$crate::consts::U1,
-            filename_max_plus_one_ty=$crate::consts::U256,
-            path_max_plus_one_ty=$crate::consts::U256,
-            result=LfsResult
+            $Name,
+            $crate::driver::Storage,
+            0xff,
+            16,
+            512,
+            $crate::consts::U512,
+            512,
+            $bytes/512,
+            $crate::consts::U1,
+            $crate::consts::U256,
+            $crate::consts::U256,
+            LfsResult
         );
     };
 }
