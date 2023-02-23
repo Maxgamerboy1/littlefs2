@@ -29,7 +29,7 @@ ram_storage!(
     lookahead_size_ty=consts::U1,
     filename_max_plus_one_ty=consts::U256,
     path_max_plus_one_ty=consts::U256,
-    result=Result,
+    result=Result
 );
 
 ram_storage!(
@@ -45,7 +45,7 @@ ram_storage!(
     lookahead_size_ty=consts::U16,
     filename_max_plus_one_ty=consts::U256,
     path_max_plus_one_ty=consts::U256,
-    result=Result,
+    result=Result
 );
 
 #[test]

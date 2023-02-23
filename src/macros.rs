@@ -17,7 +17,7 @@ macro_rules! ram_storage { (
     lookahead_size_ty=$lookahead_size:path,
     filename_max_plus_one_ty=$filename_max_plus_one:path,
     path_max_plus_one_ty=$path_max_plus_one:path,
-    result=$Result:ident,
+    result=$Result:ident
 
 ) => {
         pub struct $Backend {
@@ -149,7 +149,7 @@ macro_rules! const_ram_storage { (
     lookahead_size_ty=$lookahead_size:path,
     filename_max_plus_one_ty=$filename_max_plus_one:path,
     path_max_plus_one_ty=$path_max_plus_one:path,
-    result=$Result:ident,
+    result=$Result:ident
 
 ) => {
         pub struct $Name {
@@ -224,7 +224,7 @@ macro_rules! const_ram_storage { (
             lookahead_size_ty=$crate::consts::U1,
             filename_max_plus_one_ty=$crate::consts::U256,
             path_max_plus_one_ty=$crate::consts::U256,
-            result=LfsResult,
+            result=LfsResult
         );
     };
 }
