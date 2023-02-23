@@ -86,7 +86,7 @@ macro_rules! ram_storage { (
         ram_storage!(
             name=$Name,
             backend=$Backend,
-            trait=LfsStorage,
+            trait=$crate::driver::Storage,
             erase_value=0xff,
             read_size=1,
             write_size=1,
@@ -103,7 +103,7 @@ macro_rules! ram_storage { (
         ram_storage!(
             name=RamStorage,
             backend=Ram,
-            trait=LfsStorage,
+            trait=$crate::driver::Storage,
             erase_value=0xff,
             read_size=32,
             write_size=32,
@@ -120,7 +120,7 @@ macro_rules! ram_storage { (
         ram_storage!(
             name=RamStorage,
             backend=Ram,
-            trait=LfsStorage,
+            trait=$crate::driver::Storage,
             erase_value=0xff,
             read_size=32,
             write_size=32,
@@ -214,7 +214,7 @@ macro_rules! const_ram_storage { (
     ($Name:ident, $bytes:expr) => {
         const_ram_storage!(
             name=$Name,
-            trait=LfsStorage,
+            trait=$crate::driver::Storage,
             erase_value=0xff,
             read_size=16,
             write_size=512,
