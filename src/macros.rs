@@ -95,7 +95,7 @@ macro_rules! ram_storage { (
             $crate::consts::U1,
             $crate::consts::U256,
             $crate::consts::U256,
-            $crate::io::Result
+            LfsResult
         );
     };
     (tiny) => {
@@ -112,7 +112,7 @@ macro_rules! ram_storage { (
             $crate::consts::U1,
             $crate::consts::U256,
             $crate::consts::U256,
-            $crate::io::Result
+            LfsResult
         );
     };
     (large) => {
@@ -129,7 +129,7 @@ macro_rules! ram_storage { (
             $crate::consts::U4,
             $crate::consts::U256,
             $crate::consts::U256,
-            $crate::io::Result
+            LfsResult
         );
     };
 }
