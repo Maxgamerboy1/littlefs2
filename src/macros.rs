@@ -113,7 +113,7 @@ macro_rules! ram_storage { (
             lookahead_size_ty=$crate::consts::U1,
             filename_max_plus_one_ty=$crate::consts::U256,
             path_max_plus_one_ty=$crate::consts::U256,
-            result=Result,
+            result=LfsResult,
         );
     };
     (large) => {
@@ -130,7 +130,7 @@ macro_rules! ram_storage { (
             lookahead_size_ty=$crate::consts::U4,
             filename_max_plus_one_ty=$crate::consts::U256,
             path_max_plus_one_ty=$crate::consts::U256,
-            result=Result,
+            result=LfsResult,
         );
     };
 }
