@@ -60,7 +60,7 @@ macro_rules! ram_storage { (
                 Ok(buf.len())
             }
 
-            fn write(&mut self, offset: usize, data: &[u8]) -> $Result<usize> {
+            fn write(&mut self, offset: usize, data: &mut [u8]) -> $Result<usize> {
                 let write_size: usize = Self::WRITE_SIZE;
                 debug_assert!(offset % write_size == 0);
                 debug_assert!(data.len() % write_size == 0);
@@ -187,7 +187,7 @@ macro_rules! const_ram_storage { (
                 Ok(buf.len())
             }
 
-            fn write(&mut self, offset: usize, data: &[u8]) -> $Result<usize> {
+            fn write(&mut self, offset: usize, data: &mut [u8]) -> $Result<usize> {
                 let write_size: usize = Self::WRITE_SIZE;
                 debug_assert!(offset % write_size == 0);
                 debug_assert!(data.len() % write_size == 0);

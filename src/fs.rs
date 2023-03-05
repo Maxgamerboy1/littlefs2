@@ -520,7 +520,7 @@ impl<Storage: driver::Storage> Filesystem<'_, Storage> {
         let off = (block * block_size + off) as usize;
         let buf: &[u8] = unsafe { slice::from_raw_parts(buffer as *const u8, size as usize) };
 
-        io::error_code_from(storage.write(off, buf))
+        io::error_code_from(storage.write(off, &mut buf))
     }
 
     /// C callback interface used by LittleFS to erase data with the lower level system below the
