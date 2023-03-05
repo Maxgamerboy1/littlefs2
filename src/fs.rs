@@ -518,7 +518,7 @@ impl<Storage: driver::Storage> Filesystem<'_, Storage> {
         // let block_size = unsafe { c.read().block_size };
         let block_size = Storage::BLOCK_SIZE as u32;
         let off = (block * block_size + off) as usize;
-        let buf: &[u8] = unsafe { slice::from_raw_parts(buffer as *const u8, size as usize) };
+        let mut buf: &[u8] = unsafe { slice::from_raw_parts(buffer as *const u8, size as usize) };
 
         io::error_code_from(storage.write(off, &mut buf))
     }
